@@ -1,6 +1,9 @@
 
+let css = `._ba_modal{position:relative;display:flex;justify-content:center;z-index:1;left:0;top:0;overflow:auto;background-color:rgba(0,0,0,.4);height:100%;align-items:center;cursor:pointer}._ba_modal>img{display:block;width:80%;margin-left:auto;margin-right:auto}._ba_modal>.close{position:absolute;right:40px;top:30px;font-size:2em}._ba_banner>a>img{width:100%;height:auto}`;
+
 function checkIfBannerModalPopup() {
     let account = getRandomItem(_ba.account);
+    addStype();
     if(_ba.setting.banner) {
         createBanner(account);
     }
@@ -20,7 +23,19 @@ function replacementTags(parentEl, oldEl, newEl) {
     parentEl.replaceChild(oldModalImg, newModalImg);
 } 
 
+function addStype(){
+    var head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
 
+    style.type = 'text/css';
+    if (style.styleSheet){
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+}
 
 function checkVisible(elm) {
     var rect = elm.getBoundingClientRect();
