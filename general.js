@@ -86,17 +86,20 @@ function createModal(account) {
             let imgUrl = account.modal;
 
             let newModalImg = document.createElement('img');
+            let closeElement = document.createElement('i');
+            closeElement.classList.add('close');
+            closeElement.innerHTML = '&times;'
             newModalImg.src = imgUrl;
-
+            
             let oldModalImg = modal.querySelector('img');
 
-            let closeBtn = document.querySelector('._ba_modal > .close');
 
             if (oldModalImg) {
                 modal.replaceChild(oldModalImg, newModalImg);
                 replacementTags(madal, ldModalImg, newModalImg);
             } else {
                 modal.insertBefore(newModalImg, modal.firstChild);
+                modal.appendChild(closeElement);
             }
             modal.addEventListener('click', (event) => {
                 console.log(event.srcElement);
